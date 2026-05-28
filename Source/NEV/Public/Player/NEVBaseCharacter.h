@@ -22,6 +22,15 @@ public:
 	UFUNCTION()
 	virtual void HealthChanged(float Health, float HealthDelta);
 
+	UFUNCTION(BlueprintCallable)
+	bool GetAimPoint(FHitResult& HitResult, FVector& OutPoint, float MaxDistance) const;
+
+	UFUNCTION(BlueprintCallable, BlueprintPure) const
+		UNEVWeaponComponent* GetWeaponComponent()
+	{
+		return WeaponComponent;
+	}
+
 protected:
 
 	virtual void BeginPlay() override;
@@ -42,6 +51,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UNEVHealthComponent* HealthComponent;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class UNEVWeaponComponent* WeaponComponent;
 
 private:
 
